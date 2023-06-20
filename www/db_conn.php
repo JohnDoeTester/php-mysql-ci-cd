@@ -1,8 +1,8 @@
 <?php
 
-$sname= "db";
-$unmae= "root";
-$password = "admin@123";
+$sname= "localhost";
+$unmae= "admin";
+$password = "$^ryicHb}!M9";
 
 $db_name = "test_db";
 
