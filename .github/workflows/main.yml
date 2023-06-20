@@ -33,4 +33,4 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.PORT }}
           scripts: |
-                   mysql -uadmin -p $^ryicHb}!M9 school_db < /var/www/www/test_db.sql
+                   mysql -u${{ secrets.DBUSER }} -p${{ secrets.PASSWORD }} test_db < /var/www/www/test_db.sql
