@@ -1,0 +1,33 @@
+name: CI/CD Pipeline
+on:
+  push:
+    branches:
+      - master
+
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+                  cd /home/ubuntu
+                  rm -rf php-mysql-ci-cd
+                  git clone https://github.com/JohnDoeTester/php-mysql-ci-cd.git
+                  cd php-mysql-ci-cd
+                  chmod 766 deploy.sh
+                  ./deploy.sh
+                  docker-compose up -d
