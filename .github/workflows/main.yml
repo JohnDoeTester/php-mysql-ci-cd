@@ -24,3 +24,13 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "./www/"
           target: "/var/www/"
+
+      - name: Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.PORT }}
+          scripts: |
+                   mysql -uadmin -p $^ryicHb}!M9 school_db < /var/www/www/test_db.sql
