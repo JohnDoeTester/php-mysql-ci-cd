@@ -1,7 +1,7 @@
 <?php
 
 $sname= "localhost";
-$unmae= "admin";
+$unmae= "dbuser";
 $password = "$^ryicHb}!M9";
 
 $db_name = "test_db";
